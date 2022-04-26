@@ -29,36 +29,38 @@
             </div>
         @endif
 
-        <form action="{{ url('/Student/Store') }}" method="post" enctype="multipart/form-data">
-
-
+        <form action="{{ url('/Student/update/'.$data->id) }}" method="post" enctype="multipart/form-data">
 
             @csrf
 
             <div class="form-group">
                 <label for="exampleInputName">Name</label>
                 <input type="text" class="form-control" id="exampleInputName" aria-describedby="" name="name"
-                    placeholder="Enter Name" value="{{ old('name') }}">
+                    placeholder="Enter Name" value="{{ $data->name }}">
             </div>
 
 
             <div class="form-group">
                 <label for="exampleInputEmail">Email address</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    name="email" placeholder="Enter email" value="{{ old('email') }}">
+                    name="email" placeholder="Enter email" value="{{ $data->email }}">
             </div>
 
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label for="exampleInputPassword">New Password</label>
                 <input type="password" class="form-control" id="exampleInputPassword1" name="password"
                     placeholder="Password">
-            </div>
+            </div> --}}
 
 
             <div class="form-group">
                 <label for="exampleInputPassword">Image</label>
                 <input type="file" name="image">
             </div>
+
+              <p>
+             <img src="{{url('/stdImages/'.$data->image)}}"  width="100px"  height="100px"  alt="UserImage">
+              </p>
 
 
             <button type="submit" class="btn btn-primary">Submit</button>

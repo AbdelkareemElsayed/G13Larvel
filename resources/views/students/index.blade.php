@@ -39,11 +39,28 @@
             <h1>Read Users </h1>
             <br>
 
+  
+ 
 
+            {{ 'Welcome , '. auth()->user()->name}}
+
+          <p>
+              
+            {{   session()->get('Message')   }}
+            <br>
+      
+
+            @php
+                 // session()->forget(['message']);
+
+                    // session()->flush();
+            @endphp
+
+          </p>
 
         </div>
 
-        <a href="create.php">+ Account</a> || <a href="logout.php">LogOut</a>
+        <a href="create.php">+ Account</a> || <a href="{{url('/Logout')}}">LogOut</a>
 
         <table class='table table-hover table-responsive table-bordered'>
             <!-- creating our table heading -->
@@ -51,29 +68,36 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Email</th>
+                <th>Image</th>
                 <th>action</th>
             </tr>
 
 
-          @foreach ($data as  $key => $value )
-              
-        
-     
+            @foreach ($data as $key => $value)
+                <tr>
+                    <td>{{ $value->id }}</td>
+                    <td>{{ $value->name }}</td>
+                    <td>{{ $value->email }}</td>
 
-            <tr>
-                <td>{{$value->id}}</td>
-                <td>{{$value->name}}</td>
-                <td>{{$value->email}}</td>
-
-                <td>
-                <a href='delete.php' class='btn btn-danger m-r-1em'>Delete</a>
-
+                    @php
+                        
+                        //   (cond)? true : false      if(){ }else{  }
+                        $image = empty($value->image) ? '03.jpg' : $value->image;
+                        
+                    @endphp
 
 
-                <a href='edit.php?' class='btn btn-primary m-r-1em'>Edit</a>
-                </td>
-            </tr>
+                    <td> <img src=" {{ url('/stdImages/' . $image) }}" alt="" width="70px" height="70px"> </td>
 
+
+                    <td>
+                        <a href='{{ url('/Student/delete/' . $value->id) }}' class='btn btn-danger m-r-1em'>Delete</a>
+
+
+
+                        <a href="{{ url('/Student/edit/' . $value->id) }}" class='btn btn-primary m-r-1em'>Edit</a>
+                    </td>
+                </tr>
             @endforeach
             <!-- end table -->
         </table>

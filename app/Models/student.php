@@ -11,7 +11,7 @@ class student extends Model
 
     protected $table = "users";
 
-    protected $fillable = ["name","email","password"];
+    protected $fillable = ["name","email","password","image"];
 
   //  public $timestamps = false;
 

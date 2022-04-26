@@ -35,7 +35,19 @@ Route::get('/', function () {
 Route::get('Student/',[studentController::class,'index']);
 Route::get('Student/Create',[studentController::class,'Create']);
 Route::post('Student/Store',[studentController::class,'Store']);
+Route::get('Student/delete/{id}',[studentController::class,'destroy']);
+Route::get('Student/edit/{id}',[studentController::class,'edit']);
+Route::post('Student/update/{id}',[studentController::class,'update']);
 
+
+Route::get('Login',[studentController::class,'login']);
+Route::post('DoLogin',[studentController::class,'DoLogin']);
+Route::get('Logout',[studentController::class,'logout']);
+
+
+
+
+Route::get('Session',[studentController::class,'testSession']);
 
 
 

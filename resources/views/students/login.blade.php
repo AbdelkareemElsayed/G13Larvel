@@ -16,7 +16,7 @@
 
 
     <div class="container">
-        <h2>{{$title}}</h2>
+        <h2>{{ $title }}</h2>
 
 
         @if ($errors->any())
@@ -29,18 +29,12 @@
             </div>
         @endif
 
-        <form action="{{ url('/Student/Store') }}" method="post" enctype="multipart/form-data">
-
-
+           <p>
+        {{   session()->get('Message')   }}
+        </p>
+        <form action="{{ url('/DoLogin') }}" method="post" enctype="multipart/form-data">
 
             @csrf
-
-            <div class="form-group">
-                <label for="exampleInputName">Name</label>
-                <input type="text" class="form-control" id="exampleInputName" aria-describedby="" name="name"
-                    placeholder="Enter Name" value="{{ old('name') }}">
-            </div>
-
 
             <div class="form-group">
                 <label for="exampleInputEmail">Email address</label>
@@ -49,19 +43,13 @@
             </div>
 
             <div class="form-group">
-                <label for="exampleInputPassword">New Password</label>
+                <label for="exampleInputPassword"> Password</label>
                 <input type="password" class="form-control" id="exampleInputPassword1" name="password"
                     placeholder="Password">
             </div>
 
 
-            <div class="form-group">
-                <label for="exampleInputPassword">Image</label>
-                <input type="file" name="image">
-            </div>
-
-
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Login</button>
         </form>
     </div>
 
