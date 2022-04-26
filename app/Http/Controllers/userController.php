@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+
 class userController extends Controller
 {
     //
@@ -17,9 +18,9 @@ class userController extends Controller
 
     function Store(Request $request){
 
-       //    echo  $request->name;
+        //    echo  $request->name;
         //   echo $request->email;
-       //    echo $request->input('email');
+        //    echo $request->input('email');
         //   dd($request->all());
         //   dd($request->except(['_token']));
         //   dd($request->only(['email','_token']));
@@ -39,23 +40,23 @@ class userController extends Controller
         // dd($request->isMethod('get'));
 
 
-        // $name = $request->name; 
+        // $name = $request->name;
         // $password = $request->password;
-        // $email    = $request->email; 
+        // $email    = $request->email;
 
         // $errors = [];
 
         // if(empty($name)){
-        //     $errors['Name'] = "Field Required"; 
+        //     $errors['Name'] = "Field Required";
         // }
 
 
         // if(empty($email)){
-        //     $errors['Email'] = "Field Required"; 
+        //     $errors['Email'] = "Field Required";
         // }
 
         // if(empty($password)){
-        //     $errors['password'] = "Field Required"; 
+        //     $errors['password'] = "Field Required";
         // }
 
 
@@ -71,24 +72,24 @@ class userController extends Controller
 
 
 
-     $data =    $this->validate($request, [
-              "name"     => "required", 
-              "password" => "required|min:6|max:10", 
-              "email"    => "required|email"
+        $data =    $this->validate($request, [
+            "name"     => "required",
+            "password" => "required|min:6|max:10",
+            "email"    => "required|email"
         ]);
 
-      dd($data);
+
 
     }
 
 
 
 
-    function  profile(){  
+    function  profile(){
 
         $STDdata = ["name" => "Root" , "email" => "Root@yahoo.com" , "GPA" => 3.4];
         $title   = "LIST USER DATA";
- 
+
         // return view('profile',["data" => $STDdata]);
 
         // return view('profile')->with(['data' => $STDdata,'title' => $title]);

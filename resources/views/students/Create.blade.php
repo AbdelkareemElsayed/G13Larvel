@@ -16,7 +16,7 @@
 
 
     <div class="container">
-        <h2>Register</h2>
+        <h2>{{$title}}</h2>
 
 
         @if ($errors->any())
@@ -29,23 +29,23 @@
             </div>
         @endif
 
-        <form action="{{ url('/User/Store') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ url('/Student/Store') }}" method="post" enctype="multipart/form-data">
 
-            {{-- <input type="hidden" name="_token" value="<?php //echo csrf_token(); ?>"> --}}
 
-            @csrf 
+
+            @csrf
 
             <div class="form-group">
                 <label for="exampleInputName">Name</label>
                 <input type="text" class="form-control" id="exampleInputName" aria-describedby="" name="name"
-                    placeholder="Enter Name">
+                    placeholder="Enter Name" value="{{ old('name') }}">
             </div>
 
 
             <div class="form-group">
                 <label for="exampleInputEmail">Email address</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    name="email" placeholder="Enter email">
+                    name="email" placeholder="Enter email" value="{{ old('email') }}">
             </div>
 
             <div class="form-group">

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\studentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\userController;
 
@@ -20,15 +21,20 @@ Route::get('/', function () {
 
 
 
-Route::get('Blade', function () {
-    return view('blades');
-});
+// Route::get('Blade', function () {
+//     return view('blades');
+// });
 
 
-Route::get('User/Create',[userController::class,'Create']);
-Route::post('User/Store',[userController::class,'Store']);
-Route::get('User/prfile',[userController::class,'profile']);
+// Route::get('User/Create',[userController::class,'Create']);
+// Route::post('User/Store',[userController::class,'Store']);
+// Route::get('User/prfile',[userController::class,'profile']);
 
+
+
+Route::get('Student/',[studentController::class,'index']);
+Route::get('Student/Create',[studentController::class,'Create']);
+Route::post('Student/Store',[studentController::class,'Store']);
 
 
 
