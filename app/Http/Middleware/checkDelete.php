@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class studentCheck
+class checkDelete
 {
     /**
      * Handle an incoming request.
@@ -18,10 +18,11 @@ class studentCheck
     {
 
 
-        if(auth('student')->check()){
-        return $next($request);
-        }else{
-            return redirect(url('/Login'));
+        if (auth('student')->user()->id == $request->id) {
+            session()->flash('Message', "Can't Remove Your Account .. ");
+            return redirect(url('Student'));
+        } else {
+            return $next($request);
         }
     }
 }

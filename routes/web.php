@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\blogController;
 use App\Http\Controllers\studentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\userController;
@@ -36,11 +37,33 @@ Route :: middleware(['studentCheck'])->group(function(){
     Route::get('Student/',[studentController::class,'index']);   //->middleware('studentCheck');
     Route::get('Student/Create',[studentController::class,'Create']);
     Route::post('Student/Store',[studentController::class,'Store']);
-    Route::get('Student/delete/{id}',[studentController::class,'destroy']);
+    Route::get('Student/delete/{id}',[studentController::class,'destroy'])->middleware('checkDelete');
     Route::get('Student/edit/{id}',[studentController::class,'edit']);
     Route::post('Student/update/{id}',[studentController::class,'update']);
 
+
+
+    # Blog Crud Routes
+    Route::resource('Blog', blogController::class);
+
+/*
+ /Blog             GET       index      >>>    Route::get('Blog',[blogController :: class , 'index'])
+ /Blog/create      GET       create     >>>    Route::get('Blog/create',[blogController :: class , 'create'])
+ /Blog             POST      Store      >>>    Route::post('Blog',[blogController :: class , 'Store'])
+ /Blog/{id}/edit   GET       Edit       >>>    Route::get('Blog/{id}/edit',[blogController :: class , 'edit'])
+ /Blog/{id}        PUT       update     >>>    Route::put('Blog/{id}',[blogController :: class , 'update'])
+ /Blog/{id}        Delete    delete     >>>    Route::delete('Blog/{id}',[blogController :: class , 'delete'])
+ /Blog/{id}        GET       show       >>>    Route::get('Blog/{id}',[blogController :: class , 'show'])
+
+ Route::get('Message',['Blog',blogController :: class , 'message']);
+
+*/
+
+
 });
+
+
+
 
 
 
@@ -87,6 +110,13 @@ patch
 delete
 
 view
+
+
+        composer update
+        rename .env.example to .env
+        php artisan key:generate
+
+
 */
 
 
