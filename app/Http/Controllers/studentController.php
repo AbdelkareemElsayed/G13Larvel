@@ -13,13 +13,11 @@ class studentController extends Controller
     function  index()
     {
 
-        if(auth()->check()){
-        $data =  student::get();  // select * from users 
+
+         $data =  student::get();  // select * from users
 
         return view('students.index', ['data' => $data]);
-        }else{
-            return redirect(url('/Login')); 
-        }
+
     }
 
 
@@ -41,7 +39,7 @@ class studentController extends Controller
             "image"    => "required|image|mimes:png,jpg"
         ]);
 
-        # Rename Image .... 
+        # Rename Image ....
         $FinalName = uniqid() . '.' . $request->image->extension();
 
         if ($request->image->move(public_path('/stdImages'), $FinalName)) {
@@ -59,14 +57,14 @@ class studentController extends Controller
         } else {
            $message = 'Error Try Again';
         }
-        # Set Message Session .... 
-        session()->flash('Message',$message); 
-      
+        # Set Message Session ....
+        session()->flash('Message',$message);
+
         return redirect(url('/Student'));
 
     }
 
- 
+
     #############################################################################################################################
 
     function edit($id)
@@ -74,7 +72,7 @@ class studentController extends Controller
 
         $title = "Edit Account";
 
-        # Fetch Raw Data ... 
+        # Fetch Raw Data ...
         //    $data =  student :: where('id',$id)->get();     // $data[0]->name
         $data =  student::find($id);
 
@@ -85,7 +83,7 @@ class studentController extends Controller
 
     function update(Request $request, $id)
     {
-        // code ..... 
+        // code .....
 
         $data = $this->validate($request, [
             "name"     => 'required',
@@ -94,11 +92,11 @@ class studentController extends Controller
         ]);
 
 
-        # Fetch Raw Data ... 
+        # Fetch Raw Data ...
         $rawData = student::find($id);
 
         if ($request->hasFile('image')) {
-            # Rename Image .... 
+            # Rename Image ....
             $FinalName = uniqid() . '.' . $request->image->extension();
 
             if ($request->image->move(public_path('/stdImages'), $FinalName)) {
@@ -111,7 +109,7 @@ class studentController extends Controller
         }
 
 
-        // update users ste name = $name , email = $email where id = $id 
+        // update users ste name = $name , email = $email where id = $id
 
         $op =  student::where('id', $id)->update($data);
 
@@ -121,9 +119,9 @@ class studentController extends Controller
             $message = "Error try again";
         }
 
-     # Set Message Session .... 
-     session()->flash('Message',$message); 
-      
+     # Set Message Session ....
+     session()->flash('Message',$message);
+
      return redirect(url('/Student'));
 
 
@@ -133,13 +131,13 @@ class studentController extends Controller
 
     function destroy($id)
     {
-        // code .... 
+        // code ....
 
-        # Fetch RaW Data  
+        # Fetch RaW Data
         $raw = student::find($id);
 
-        # Delete Raw .... 
-        $op =   student::where('id', $id)->delete(); // delete from users where id = $id 
+        # Delete Raw ....
+        $op =   student::where('id', $id)->delete(); // delete from users where id = $id
 
         if ($op) {
 
@@ -150,40 +148,40 @@ class studentController extends Controller
             $message = 'Error Try Again';
         }
 
-             # Set Message Session .... 
-             session()->flash('Message',$message); 
-      
+             # Set Message Session ....
+             session()->flash('Message',$message);
+
              return redirect(url('/Student'));
     }
 #############################################################################################################################
 
 function login(){
-    
+
     return view('Students.login',['title' => "Login Page"]);
- 
+
 }
 
 #############################################################################################################################
 
 function DoLogin(Request $request){
-    // code .... 
-   
+    // code ....
+
      $data = $this->validate($request, [
-           "email"    => "required|email", 
+           "email"    => "required|email",
            "password" => "required|min:6|max:10"
      ]);
 
 
-       if(auth()->attempt($data)){
-           
-          return redirect(url('/Student/')); 
+       if(auth('student')->attempt($data)){
+
+          return redirect(url('/Student/'));
 
        }else{
-          
-        session()->flash('Message',"Error In Your Data Try Again"); 
 
-        return back(); 
-         
+        session()->flash('Message',"Error In Your Data Try Again");
+
+        return back();
+
        }
 
 }
@@ -193,9 +191,9 @@ function DoLogin(Request $request){
 
   function logout(){
 
-      auth()->logout(); 
-      return redirect(url('/Login')); 
- 
+      auth('student')->logout();
+      return redirect(url('/Login'));
+
     }
 
 #############################################################################################################################
@@ -204,7 +202,7 @@ function DoLogin(Request $request){
         //   session()->put('message', 'Test Laravel Session Message');   // $_SESSION[KEY] = VALUE
         //   session()->put('message2', 'Test Laravel Session Message');
         //   session()->put('message3', 'Test Laravel Session Message');
-       //    session()->flash('message', 'Test Laravel Session Message');  
+       //    session()->flash('message', 'Test Laravel Session Message');
 
    }
 

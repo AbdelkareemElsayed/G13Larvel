@@ -39,28 +39,28 @@
             <h1>Read Users </h1>
             <br>
 
-  
- 
 
-            {{ 'Welcome , '. auth()->user()->name}}
 
-          <p>
-              
-            {{   session()->get('Message')   }}
-            <br>
-      
 
-            @php
-                 // session()->forget(['message']);
+            {{ 'Welcome , ' . auth('student')->user()->name }}
+
+            <p>
+
+                {{ session()->get('Message') }}
+                <br>
+
+
+                @php
+                    // session()->forget(['message']);
 
                     // session()->flush();
-            @endphp
+                @endphp
 
-          </p>
+            </p>
 
         </div>
 
-        <a href="create.php">+ Account</a> || <a href="{{url('/Logout')}}">LogOut</a>
+        <a href="create.php">+ Account</a> || <a href="{{ url('/Logout') }}">LogOut</a>
 
         <table class='table table-hover table-responsive table-bordered'>
             <!-- creating our table heading -->
@@ -80,10 +80,10 @@
                     <td>{{ $value->email }}</td>
 
                     @php
-                        
+
                         //   (cond)? true : false      if(){ }else{  }
                         $image = empty($value->image) ? '03.jpg' : $value->image;
-                        
+
                     @endphp
 
 
