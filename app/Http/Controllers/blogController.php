@@ -13,7 +13,7 @@ class blogController extends Controller
       function __construct()
       {
 
-           //  $this->middleware([''],['except' => [""]]);
+            $this->middleware(['checkBlog'],['except' => ["index","create","store"]]);
       }
 
 
