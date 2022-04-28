@@ -36,13 +36,13 @@
 
 
         <div class="page-header">
-            <h1>Read Users </h1>
+            <h1>{{trans('labels.r_std')}} </h1>
             <br>
 
 
 
 
-            {{ 'Welcome , ' . auth('student')->user()->name }}
+            {{ trans('labels.welcome').' , ' . auth('student')->user()->name }}
 
             <p>
 
@@ -60,16 +60,18 @@
 
         </div>
 
-        <a href="create.php">+ Account</a> || <a href="{{ url('/Logout') }}">LogOut</a>
+        <a href="create.php">+ Account</a> || <a href="{{ url('/Blog') }}">LIST BLOGS</a> || <a href="{{ url('/Logout') }}">LogOut</a>
+        <br>
 
+        <a href="#">EN</a> |  <a href="#">ع</a>
         <table class='table table-hover table-responsive table-bordered'>
             <!-- creating our table heading -->
             <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Image</th>
-                <th>action</th>
+                <th>{{trans('labels.id')}}</th>
+                <th>{{trans('labels.name')}}</th>
+                <th>{{trans('labels.email')}}</th>
+                <th>{{trans('labels.image')}}</th>
+                <th>{{trans('labels.action')}}</th>
             </tr>
 
 
@@ -91,11 +93,11 @@
 
 
                     <td>
-                        <a href='{{ url('/Student/delete/' . $value->id) }}' class='btn btn-danger m-r-1em'>Delete</a>
+                        <a href='{{ url('/Student/delete/' . $value->id) }}' class='btn btn-danger m-r-1em'>{{trans('labels.delete')}}</a>
 
 
 
-                        <a href="{{ url('/Student/edit/' . $value->id) }}" class='btn btn-primary m-r-1em'>Edit</a>
+                        <a href="{{ url('/Student/edit/' . $value->id) }}" class='btn btn-primary m-r-1em'>{{trans('labels.edit')}}</a>
                     </td>
                 </tr>
             @endforeach

@@ -31,18 +31,27 @@
 
 <body>
 
+
+     @php
+
+         // echo app()->getlocale();
+            //  app()->setLocale("ar");
+     @endphp
+
+
+
     <!-- container -->
     <div class="container">
 
 
         <div class="page-header">
-            <h1>Read Users </h1>
+            <h1> {{  trans('labels.r_blog')  }} </h1>
             <br>
 
 
 
 
-            {{ 'Welcome , ' . auth('student')->user()->name }}
+            {{   trans('labels.welcome') .', ' . auth('student')->user()->name }}
 
             <p>
 
@@ -53,19 +62,25 @@
         </div>
 
         <a href="create.php">+ Blog</a> || <a href="{{ url('/Logout') }}">LogOut</a>
+        <br>
+
+        <a href="#">EN</a> |  <a href="#">ع</a>
+
+
 
         <table class='table table-hover table-responsive table-bordered'>
             <!-- creating our table heading -->
             <tr>
                 <th>#</th>
-                <th>ID</th>
-                <th>Title</th>
-                <th>Content</th>
-                <th>Date</th>
-                <th>Image</th>
-                <th>Added By</th>
-                <th>Show </th>
-                <th>action</th>
+                <th>{{trans('labels.id')}}</th>
+                <th>{{trans('labels.title')}}</th>
+                <th>{{trans('labels.content')}}</th>
+                <th>{{trans('labels.date')}}</th>
+                <th>{{trans('labels.image')}}</th>
+                <th>{{trans('labels.addedBy')}}</th>
+                <th>{{trans('labels.show')}} </th>
+                <th>{{trans('labels.action')}} </th>
+
             </tr>
 
 
@@ -89,16 +104,16 @@
 
                     <td>{{$value->userName}}</td>
 
-                   <td>   <a href="{{ url('/Blog/' . $value->id) }}" class='btn btn-primary m-r-1em'>Show</a>
+                   <td>   <a href="{{ url('/Blog/' . $value->id) }}" class='btn btn-primary m-r-1em'>{{trans('labels.show')}}</a>
                    </td>
 
                     <td>
 
 
-                        <a href='' data-toggle="modal" data-target="#modal_single_del{{$value->id}}" class='btn btn-danger m-r-1em'>Remove </a>
+                        <a href='' data-toggle="modal" data-target="#modal_single_del{{$value->id}}" class='btn btn-danger m-r-1em'>{{trans('labels.delete')}} </a>
 
 
-                        <a href="{{ url('/Blog/'.$value->id.'/edit') }}" class='btn btn-primary m-r-1em'>Edit</a>
+                        <a href="{{ url('/Blog/'.$value->id.'/edit') }}" class='btn btn-primary m-r-1em'>{{trans('labels.edit')}}</a>
                     </td>
                 </tr>
 
