@@ -61,10 +61,10 @@
 
         </div>
 
-        <a href="create.php">+ Blog</a> || <a href="{{ url('/Logout') }}">LogOut</a>
+        <a href="{{url('Blog/create')}}">+ Blog</a> || <a href="{{ url('/Logout') }}">LogOut</a>
         <br>
 
-        <a href="#">EN</a> |  <a href="#">ع</a>
+        <a href="{{url('Lang/en')}}">EN</a> |  <a href="{{url('Lang/ar')}}">ع</a>
 
 
 

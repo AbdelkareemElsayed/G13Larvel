@@ -17,6 +17,7 @@ return [
     "r_std"      => "List Users",
     "name"       => "Name",
     "email"      => "Email",
+    "save"       => "Save"
 
 
 ];

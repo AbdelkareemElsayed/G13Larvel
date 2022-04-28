@@ -66,6 +66,7 @@ class Kernel extends HttpKernel
         'studentCheck' => \App\Http\Middleware\studentCheck::class,
         'checkDelete'   =>  \App\Http\Middleware\checkDelete::class,
         'checkBlog'   =>  \App\Http\Middleware\checkBlog::class,
+        'lang'   =>  \App\Http\Middleware\lang::class,
 
 
     ];

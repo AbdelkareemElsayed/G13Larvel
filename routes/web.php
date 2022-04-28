@@ -16,6 +16,8 @@ use App\Http\Controllers\userController;
 |
 */
 
+Route :: middleware(['lang'])->group(function(){
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -77,6 +79,19 @@ Route::get('Logout',[studentController::class,'logout']);
 
 
 Route::get('Session',[studentController::class,'testSession']);
+
+
+
+  Route::get('Lang/{lang}',function ($lang){
+
+    # SET SESSION LANGAUGE .....
+    session()->put('lang',$lang);
+
+     return back();
+
+  });
+
+});
 
 
 
